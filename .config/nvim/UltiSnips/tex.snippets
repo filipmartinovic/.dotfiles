@@ -1,1 +1,277 @@
+########################################
+snippet beg "\begin{ }" i
+\begin{${1:equation*}}
+    $2
+	${3:\text.}
+\end{$1}
+endsnippet
+########################################
+snippet equ "\begin{equation*}" b
+\begin{equation*}
+    $1
+	${3:\text.}
+\end{equation*}
+endsnippet
+########################################
+snippet ali "\begin{align*}" b
+\begin{align*}
+    $1
+	${3:\text.}
+\end{align*}
+endsnippet
+########################################
+snippet the "\begin{theorem}" b
+\begin{theorem}
+    $1
+\end{theorem}
+
+
+endsnippet
+########################################
+snippet cor "\begin{corollary}" b
+\begin{corollary}
+    $1
+\end{corollary}
+
+
+endsnippet
+########################################
+snippet lem "\begin{lemma}" b
+\begin{lemma}
+    $1
+\end{lemma}
+
+
+endsnippet
+########################################
+snippet prop "\begin{proposition}" b
+\begin{proposition}
+    $1
+\end{proposition}
+
+
+endsnippet
+########################################
+snippet def "\begin{definition}" b
+\begin{definition}
+    $1
+\end{definition}
+
+
+endsnippet
+########################################
+snippet rem "\begin{remark}" b
+\begin{remark}
+    $1
+\end{remark}
+
+
+endsnippet
+########################################
+snippet exe "\begin{exercise}" b
+\begin{exercise}
+    $1
+\end{exercise}
+
+
+endsnippet
+########################################
+snippet fra "\begin{frame}" b
+\begin{frame}
+    $1
+\end{frame}
+
+
+endsnippet
+########################################
+snippet frat "\begin{frame}[t]" b
+\begin{frame}[t]{$1}
+    $2
+\end{frame}
+
+
+endsnippet
+########################################
+snippet blo "\begin{block}" b
+\begin{block}{$1}
+    $2
+\end{block}
+
+
+endsnippet
+########################################
+snippet exa "\begin{example}" b
+\begin{example}
+    $1
+\end{example}
+
+
+endsnippet
+########################################
+snippet pro "\begin{proof}" b
+\begin{proof}
+    $1
+\end{proof}
+
+
+endsnippet
+########################################
+snippet sol "\begin{solution}" b
+\begin{solution}
+    $1
+\end{solution}
+
+
+endsnippet
+########################################
+snippet item "\begin{itemize}" b
+\begin{itemize}
+    \item $1
+\end{itemize}
+endsnippet
+########################################
+snippet enum "\begin{enumerate}" b
+\begin{enumerate}${1:[label={(\arabic*)}]}
+    \item $2
+\end{enumerate}
+endsnippet
+########################################
+snippet $ "inline math $ ... $" iA
+$$1$
+endsnippet
+########################################
+snippet dmm "display math mode \[ ... \]" iA
+\[
+	$1
+\]
+endsnippet
+########################################
+snippet ( "paranthesis brackets" iA
+($1)
+endsnippet
+########################################
+snippet [ "square brackets" iA
+[$1]
+endsnippet
+########################################
+snippet { "curly brackets" iA
+{$1}
+endsnippet
+########################################
+snippet supscript "math superscript" i
+^{$1}
+endsnippet
+########################################
+snippet subscript "math subscript" i
+_{$1}
+endsnippet
+########################################
+snippet restriction "math restriction" i
+${2:\big}|_{$1}
+endsnippet
+#########################################
+#snippet ^ "math superscript" iA
+#^{$1}
+#endsnippet
+#########################################
+#snippet _ "math subscript" iA
+#_{$1}
+#endsnippet
+########################################
+snippet sum "math sum" i
+\sum_{$1}^{$2}
+endsnippet
+########################################
+snippet prod "math prod" i
+\prod_{$1}^{$2}
+endsnippet
+########################################
+snippet cop "math coprod" i
+\coprod_{$1}^{$2}
+endsnippet
+########################################
+snippet bigotimes "math bigotimes" i
+\bigotimes_{$1}^{$2}
+endsnippet
+########################################
+snippet bigoplus "math bigoplus" i
+\bigoplus_{$1}^{$2}
+endsnippet
+########################################
+snippet int "math int" i
+\int_{$1}^{$2}
+endsnippet
+########################################
+snippet part "math partial" i
+\partial
+endsnippet
+########################################
+snippet sqrt "math sqrt" i
+\sqrt{$1}
+endsnippet
+########################################
+snippet frac "math frac" i
+\frac{$1}{$2}
+endsnippet
+########################################
+snippet bin "math binom" i
+\binom{$1}{$2}
+endsnippet
+########################################
+snippet binq "math qbinom" i
+\qbinom{$1}{$2}
+endsnippet
+########################################
+snippet qrp "math qrisingpower" i
+\qrisingpower{$1}
+endsnippet
+########################################
+snippet qfp "math qfallingpower" i
+\qfallingpower{$1}
+endsnippet
+########################################
+snippet iset "inline set" i
+\\${3:left}\\{\\${6:left.} $1 \\: \\${5:right}| \\: $2 \\${4:right}\\}
+endsnippet
+########################################
+snippet mset "math set" i
+\\${3:left}\\{\\${6:left.}
+	$1
+		\\: \\${5:right}| \\:
+	$2
+\\${4:right}\\}
+endsnippet
+########################################
+snippet lim "math lim" i
+\lim_{$1\to $2}
+endsnippet
+########################################
+snippet | "math restriction" i
+\\${2:Bigg}|_{$1}
+endsnippet
+########################################
+snippet \\ "align new row" i
+\\\\
+&= 
+endsnippet
+########################################
+snippet ul "underline" i
+\underline{$1}
+endsnippet
+########################################
+snippet te "insert text" i
+\text{$1}
+endsnippet
+########################################
+snippet bf "insert text bold font" i
+\textbf{$1}
+endsnippet
+########################################
+snippet sc "insert text smallcaps font" i
+\textsc{$1}
+endsnippet
+########################################
+snippet textsc "insert text smallcaps font" i
+\textsc{$1}
+endsnippet
 
