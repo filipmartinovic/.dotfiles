@@ -1,1 +1,155 @@
+##################################################################################################
+
+MilisecondsSinceEpoch := function ( )
+
+    return Int( NanosecondsSinceEpoch() / 1000000 );
+
+end;
+
+START_TIME := MilisecondsSinceEpoch();
+LAP_TIME := START_TIME;
+
+InitializeTime := function ( )
+
+    START_TIME := MilisecondsSinceEpoch();
+    LAP_TIME := START_TIME;
+
+end;
+
+LapTime := function( )
+
+    Print( "Time since start:", 
+           StringTime( MilisecondsSinceEpoch() - START_TIME ),
+           ". Lap time:",
+           StringTime( MilisecondsSinceEpoch() - LAP_TIME ),
+           "\n\n\c"
+    );
+    LAP_TIME := MilisecondsSinceEpoch();
+
+end;
+
+FinalTime := function( )
+
+    Print( "Final time:", 
+           StringTime( MilisecondsSinceEpoch() - START_TIME ),
+           ". Lap time:",
+           StringTime( MilisecondsSinceEpoch() - LAP_TIME ),
+           "\n\n\c"
+    );
+    LAP_TIME := MilisecondsSinceEpoch();
+
+end;
+
+##################################################################################################
+
+# Fetch current date and time as string in format YYYY-MM-DD-HH-MM-SS.MMM
+#                         year-month-day-hours-minute-seconds.miliseconds
+
+CurrentDateAndTime := function ( )
+
+    local DateAndTimeString,
+          StreamOutput,
+          DateExecutable;
+
+    DateAndTimeString := "";
+    StreamOutput := OutputTextString( DateAndTimeString, true );
+    #Finding date executable
+    DateExecutable := Filename( DirectoriesSystemPrograms(), "date" );
+    Process( DirectoryCurrent(),
+             DateExecutable,
+             InputTextNone(),
+             StreamOutput,
+             [ "+%Y-%m-%d-%H-%M-%S.%3N" ]
+    );
+    CloseStream( StreamOutput );
+
+    # ova funkcija svaku instancu izraza "\n" mijenja s "", u sustini izbrise svaki \n
+    DateAndTimeString := ReplacedString( DateAndTimeString, "\n", "" );
+
+    return DateAndTimeString;
+
+end;
+
+##################################################################################################
+
+# Log this gap session into a file
+
+LogCurrentGapSession := function ( )
+
+    local LogFileName;
+
+    # provjeravamo postoji li logs directory, ako ne postoji kreiramo ga
+    if not IsExistingFile("logs") then
+        Exec("mkdir logs");
+    fi;
+
+    # ako postoji, mozda je file koji se zove logs
+    if DirectoryContents( Directory("logs") ) = fail then
+        Error("There exists a file called logs");
+    fi;
+
+    LogFileName := Concatenation( "./logs/log_", CurrentDateAndTime(), ".txt" );
+
+    # postoji directory logs, idemo sada vidjeti postoji li unutra txt file koji mi zelimo kreirati
+    if IsExistingFile( LogFileName ) then
+        Error( Concatenation( "There already exists a file called ", LogFileName ) );
+    fi;
+
+    # to cancel previous loggin
+    LogTo();
+    # new logging of program
+    LogTo( LogFileName );
+
+    Print("Logging current GAP session into file: ", LogFileName, "\n\n");
+
+    # TODO add Print(); announcement about logging of this program, and add gap> Read("main.g"); at the start of the line optionally
+
+    # TODO edit log file to keep track of GAP versions and stuff like that
+end;
+
+##################################################################################################
+
+LogOutput := function ( Argument )
+
+    AppendTo("output.txt", "gap> ", Argument , "\n");
+
+end;
+
+LogData := function ( Filename, Argument )
+
+    PrintTo( Filename, Argument );
+
+end;
+
+LogDataAsFunction := function ( Filename, Argument )
+
+    PrintTo( Filename, "return ", Argument, ";" );
+
+end;
+
+ReadData := function ( Filename )
+
+    Read( Filename );
+
+end;
+
+ReadDataAsFunction := function ( Filename )
+
+    return ReadAsFunction( Filename )();
+
+end;
+
+##################################################################################################
+
+rc := function( )
+
+    Print("Executing Read(\"runcommands.g\");\n\c");
+    Read("runcommands.g");
+
+end;
+
+##################################################################################################
+
+
+##################################################################################################
 
