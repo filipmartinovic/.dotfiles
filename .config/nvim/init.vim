@@ -173,6 +173,7 @@ let g:vimtex_view_method = 'zathura'
 let g:vimtex_compiler_method = 'latexmk'
 " Disable custom warnings based on regexp
 let g:vimtex_quickfix_ignore_filters = [
+      \ "LaTeX hooks Warning:",
       \ "Generic hook 'package/before/framed' is deprecated.",
       \ "Generic hook 'package/before/float' is deprecated.",
       \ "Font shape",
